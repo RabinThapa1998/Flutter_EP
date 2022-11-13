@@ -18,22 +18,28 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'Poppins',
           textTheme: const TextTheme(
-            titleLarge: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
-            bodyLarge: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-            bodyMedium: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-            displayMedium: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 18,
-              color: Colors.black,
-            ),
-          )),
+              titleLarge: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
+              bodyLarge: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+              bodyMedium: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              displayMedium: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+                color: Colors.black,
+              ),
+              titleSmall: TextStyle(
+                fontWeight: FontWeight.w100,
+                fontSize: 14.0,
+                color: Colors.grey,
+              ))),
       home: BaseScreen(),
     );
   }
