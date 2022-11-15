@@ -61,6 +61,9 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text("Category"),
+      decoration: BoxDecoration(
+        border: Border.all(color: kPrimaryColor),
+      ),
     );
   }
 }
