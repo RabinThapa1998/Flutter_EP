@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           textTheme: const TextTheme(
               titleLarge: TextStyle(
-                  fontSize: 20,
+                  fontSize: 28,
                   color: Colors.white,
                   fontWeight: FontWeight.w500),
-              bodyLarge: TextStyle(
-                fontSize: 20,
+              titleSmall: TextStyle(
+                fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
               bodyMedium: TextStyle(
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 18,
                 color: Colors.black,
               ),
-              titleSmall: TextStyle(
+              bodySmall: TextStyle(
                 fontWeight: FontWeight.w100,
                 fontSize: 14.0,
                 color: Colors.grey,
