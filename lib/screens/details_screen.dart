@@ -1,17 +1,22 @@
-import 'package:entrance_prep/models/course.dart';
-import 'package:entrance_prep/widgets/course_container.dart';
+import 'package:entrance_prep/models/quiz.dart';
 import 'package:entrance_prep/widgets/custom_icon_button.dart';
+import 'package:entrance_prep/widgets/quiz_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CourseScreen extends StatefulWidget {
-  const CourseScreen({Key? key}) : super(key: key);
+class DetailsScreen extends StatefulWidget {
+  final String title;
+  const DetailsScreen({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
-  _CourseScreenState createState() => _CourseScreenState();
+  State<DetailsScreen> createState() => _DetailsScreenState();
 }
 
-class _CourseScreenState extends State<CourseScreen> {
+class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -29,7 +34,7 @@ class _CourseScreenState extends State<CourseScreen> {
                     children: [
                       Align(
                         child: Text(
-                          "Development",
+                          "${widget.title}",
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
@@ -47,22 +52,21 @@ class _CourseScreenState extends State<CourseScreen> {
                   height: 15,
                 ),
                 Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    separatorBuilder: (_, __) {
-                      return const SizedBox(
-                        height: 10,
-                      );
-                    },
-                    shrinkWrap: true,
-                    itemBuilder: (_, int index) {
-                      return CourseContainer(
-                        course: courses[index],
-                      );
-                    },
-                    itemCount: courses.length,
-                  ),
-                ),
+                    child: ListView.separated(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  separatorBuilder: (_, __) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  },
+                  shrinkWrap: true,
+                  itemBuilder: (_, int index) {
+                    return QuizWidget(
+                      quizzes: Quizzes[index],
+                    );
+                  },
+                  itemCount: Quizzes.length,
+                )),
               ],
             ),
           ),
