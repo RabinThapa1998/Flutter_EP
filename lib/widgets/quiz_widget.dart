@@ -2,35 +2,29 @@ import 'package:entrance_prep/models/quiz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+typedef void QuizOnChangeCallback(String quest, String ans);
+
 class QuizWidget extends StatefulWidget {
   final Quiz quizzes;
+  final Map overAllValues;
 
-  QuizWidget({Key? key, required this.quizzes}) : super(key: key);
+  final QuizOnChangeCallback callback;
+
+  QuizWidget(
+      {Key? key,
+      required this.quizzes,
+      required this.overAllValues,
+      required this.callback})
+      : super(key: key);
 
   @override
   State<QuizWidget> createState() => _QuizWidgetState();
 }
 
 class _QuizWidgetState extends State<QuizWidget> {
-  String groupValue = '';
-
-  void handleRadioChange(Object val) {
-    print(val);
-    setState(() {
-      groupValue = val.toString();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
-        ),
-        borderRadius: BorderRadius.circular(10),
-      ),
       child: Column(children: [
         Text(
           widget.quizzes.question,
@@ -39,9 +33,11 @@ class _QuizWidgetState extends State<QuizWidget> {
         SizedBox(
           height: 10,
         ),
-        Expanded(
+        Container(
+          height: 200,
           child: ListView.builder(
             shrinkWrap: false,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: widget.quizzes.options.length,
             itemBuilder: (context, index) {
               return ListTile(
@@ -50,8 +46,9 @@ class _QuizWidgetState extends State<QuizWidget> {
                     style: Theme.of(context).textTheme.bodySmall),
                 leading: Radio(
                     value: widget.quizzes.options[index],
-                    groupValue: groupValue,
-                    onChanged: (val) => handleRadioChange(val!)),
+                    groupValue: widget.overAllValues[widget.quizzes.question],
+                    onChanged: (val) => widget.callback(
+                        widget.quizzes.question, val.toString())),
               );
             },
           ),
