@@ -1,4 +1,5 @@
 import 'package:entrance_prep/models/quiz.dart';
+import 'package:entrance_prep/screens/result_screen.dart';
 import 'package:entrance_prep/widgets/custom_icon_button.dart';
 import 'package:entrance_prep/widgets/quiz_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -86,6 +87,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   },
                   itemCount: Quizzes.length,
                 )),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResultScreen(
+                                  results: overAllValues,
+                                )),
+                      );
+                    },
+                    child: Text("Submit"))
               ],
             ),
           ),
