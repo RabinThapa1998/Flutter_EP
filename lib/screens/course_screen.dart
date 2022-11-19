@@ -1,3 +1,4 @@
+import 'package:entrance_prep/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +28,14 @@ class _CourseScreenState extends State<CourseScreen> {
                           "Development",
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
-                      )
+                      ),
+                      Positioned(
+                          left: 0,
+                          child: CustomIconButton(
+                              child: Icon(Icons.arrow_back),
+                              height: 35,
+                              width: 35,
+                              onTap: () => Navigator.pop(context)))
                     ],
                   ),
                 ))));
