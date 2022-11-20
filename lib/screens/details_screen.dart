@@ -1,3 +1,4 @@
+import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/models/quiz.dart';
 import 'package:entrance_prep/screens/result_screen.dart';
 import 'package:entrance_prep/widgets/back_button_widget.dart';
@@ -70,17 +71,44 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 },
                 itemCount: Quizzes.length,
               )),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ResultScreen(
-                                results: overAllValues,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: kPrimaryColor,
+                              onPrimary: Colors.white,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
                               )),
-                    );
-                  },
-                  child: Text("Submit"))
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultScreen(
+                                        results: overAllValues,
+                                      )),
+                            );
+                          },
+                          child: Text(
+                            "Submit",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
