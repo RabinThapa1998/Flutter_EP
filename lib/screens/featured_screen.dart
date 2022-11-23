@@ -16,8 +16,9 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
     return AnnotatedRegion(
         value: SystemUiOverlayStyle.light,
         child: Scaffold(
-            body: SingleChildScrollView(
-                child:
-                    Column(children: [AppBarWidget(), FeaturedBodyWidget()]))));
+            body: SafeArea(
+          child: SingleChildScrollView(
+              child: Column(children: [AppBarWidget(), FeaturedBodyWidget()])),
+        )));
   }
 }
