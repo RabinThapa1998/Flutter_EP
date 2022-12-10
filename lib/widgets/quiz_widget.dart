@@ -104,15 +104,17 @@ class _QuizWidgetState extends State<QuizWidget> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: widget.quizzes.options.length,
             itemBuilder: (context, index) {
-              return LabeledRadio(
-                  index: index,
-                  label: widget.quizzes.options[index],
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10),
-                  value: widget.quizzes.options[index],
-                  groupValue: widget.overAllValues[widget.quizzes.question],
-                  onChanged: (val) =>
-                      widget.callback(widget.quizzes.question, val.toString()));
+              return Expanded(
+                child: LabeledRadio(
+                    index: index,
+                    label: widget.quizzes.options[index],
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10),
+                    value: widget.quizzes.options[index],
+                    groupValue: widget.overAllValues[widget.quizzes.question],
+                    onChanged: (val) => widget.callback(
+                        widget.quizzes.question, val.toString())),
+              );
             },
           ),
         )
