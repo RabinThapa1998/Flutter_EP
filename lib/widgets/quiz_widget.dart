@@ -52,10 +52,12 @@ class LabeledRadio extends StatelessWidget {
                   },
                 ),
               ),
-              Text(
-                "${index + 1}.   ${label}",
-                style: TextStyle(
-                  color: value == groupValue ? Colors.white : Colors.black,
+              Expanded(
+                child: Text(
+                  "${index + 1}.   ${label}",
+                  style: TextStyle(
+                    color: value == groupValue ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
             ],
@@ -104,17 +106,15 @@ class _QuizWidgetState extends State<QuizWidget> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: widget.quizzes.options.length,
             itemBuilder: (context, index) {
-              return Expanded(
-                child: LabeledRadio(
-                    index: index,
-                    label: widget.quizzes.options[index],
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10),
-                    value: widget.quizzes.options[index],
-                    groupValue: widget.overAllValues[widget.quizzes.question],
-                    onChanged: (val) => widget.callback(
-                        widget.quizzes.question, val.toString())),
-              );
+              return LabeledRadio(
+                  index: index,
+                  label: widget.quizzes.options[index],
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 10),
+                  value: widget.quizzes.options[index],
+                  groupValue: widget.overAllValues[widget.quizzes.question],
+                  onChanged: (val) =>
+                      widget.callback(widget.quizzes.question, val.toString()));
             },
           ),
         )
