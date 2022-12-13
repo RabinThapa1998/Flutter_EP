@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:entrance_prep/widgets/appbar_widget.dart';
 import 'package:entrance_prep/widgets/featured_screen_body_widget.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class FeaturedScreen extends StatefulWidget {
   FeaturedScreen({Key? key}) : super(key: key);
@@ -11,6 +12,10 @@ class FeaturedScreen extends StatefulWidget {
 }
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(

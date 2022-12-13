@@ -1,14 +1,15 @@
 import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/models/course.dart';
+import 'package:entrance_prep/models/get-set.model.dart';
 import 'package:entrance_prep/screens/details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CourseContainer extends StatelessWidget {
-  final Course course;
+  final SetItem eachSet;
   const CourseContainer({
     Key? key,
-    required this.course,
+    required this.eachSet,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class CourseContainer extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => DetailsScreen(
-                    title: course.name,
+                    title: eachSet.name,
                   ))),
       child: Container(
         decoration: BoxDecoration(
@@ -29,13 +30,13 @@ class CourseContainer extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                course.thumbnail,
-                height: 60,
-              ),
-            ),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(10),
+            //   child: Image.asset(
+            //     course.thumbnail,
+            //     height: 60,
+            //   ),
+            // ),
             const SizedBox(
               width: 10,
             ),
@@ -43,19 +44,19 @@ class CourseContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(course.name),
+                  Text(eachSet.name),
                   Text(
-                    "Author ${course.author}",
+                    "Author ${eachSet.name}",
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  LinearProgressIndicator(
-                    value: course.completedPercentage,
-                    backgroundColor: Colors.black12,
-                    color: kPrimaryColor,
-                  )
+                  // LinearProgressIndicator(
+                  //   value: course.completedPercentage,
+                  //   backgroundColor: Colors.black12,
+                  //   color: kPrimaryColor,
+                  // )
                 ],
               ),
             ),
