@@ -36,23 +36,26 @@ class _CourseScreenState extends State<CourseScreen> {
                   height: 15,
                 ),
                 Expanded(
-                  child: Obx(
-                    () => ListView.separated(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      separatorBuilder: (_, __) {
-                        return const SizedBox(
-                          height: 10,
-                        );
-                      },
-                      shrinkWrap: true,
-                      itemBuilder: (_, int index) {
-                        return CourseContainer(
-                          eachSet: setcontroller.setsList[index],
-                        );
-                      },
-                      itemCount: setcontroller.setsList.length,
-                    ),
-                  ),
+                  child: Obx(() {
+                    if (setcontroller.isLoading.value) {
+                      return Center(child: CircularProgressIndicator());
+                    } else
+                      return ListView.separated(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        separatorBuilder: (_, __) {
+                          return const SizedBox(
+                            height: 10,
+                          );
+                        },
+                        shrinkWrap: true,
+                        itemBuilder: (_, int index) {
+                          return CourseContainer(
+                            eachSet: setcontroller.setsList[index],
+                          );
+                        },
+                        itemCount: setcontroller.setsList.length,
+                      );
+                  }),
                 )
               ],
             ),

@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 class RemoteServices {
   static var client = http.Client();
   static Future<List<SetItem>> fetchSets() async {
-    var response = await client
-        .get(Uri.parse('http:192.168.1.88:8000/api/v1/dashboard/sets'));
+    var response =
+        await client.get(Uri.parse(dotenv.env['BASE_URL']! + '/sets'));
 
     if (response.statusCode == 200) {
       print("response");
