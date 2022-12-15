@@ -1,23 +1,24 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromMap(jsonString);
+//     final SetDetails = SetDetailsFromMap(jsonString);
 
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class Welcome {
-  Welcome({
+class SetDetails {
+  SetDetails({
     required this.data,
   });
 
-  Data data;
+  SetItemDetail data;
 
-  factory Welcome.fromJson(String str) => Welcome.fromMap(json.decode(str));
+  factory SetDetails.fromJson(String str) =>
+      SetDetails.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Welcome.fromMap(Map<String, dynamic> json) => Welcome(
-        data: Data.fromMap(json["data"]),
+  factory SetDetails.fromMap(Map<String, dynamic> json) => SetDetails(
+        data: SetItemDetail.fromMap(json["data"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -25,10 +26,11 @@ class Welcome {
       };
 }
 
-class Data {
-  Data({
+class SetItemDetail {
+  SetItemDetail({
     required this.name,
     required this.questions,
+    required this.description,
     required this.active,
     required this.createdAt,
     required this.updatedAt,
@@ -37,19 +39,22 @@ class Data {
 
   String name;
   List<Question> questions;
+  String description;
   bool active;
   DateTime createdAt;
   DateTime updatedAt;
   String id;
 
-  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+  factory SetItemDetail.fromJson(String str) =>
+      SetItemDetail.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory SetItemDetail.fromMap(Map<String, dynamic> json) => SetItemDetail(
         name: json["name"],
         questions: List<Question>.from(
             json["questions"].map((x) => Question.fromMap(x))),
+        description: json["description"],
         active: json["active"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -59,6 +64,7 @@ class Data {
   Map<String, dynamic> toMap() => {
         "name": name,
         "questions": List<dynamic>.from(questions.map((x) => x.toMap())),
+        "description": description,
         "active": active,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),

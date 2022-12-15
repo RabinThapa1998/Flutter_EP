@@ -29,6 +29,7 @@ class SetItem {
   SetItem({
     required this.name,
     required this.questions,
+    required this.description,
     required this.active,
     required this.createdAt,
     required this.updatedAt,
@@ -36,6 +37,7 @@ class SetItem {
   });
 
   String name;
+  String description;
   List<String> questions;
   bool active;
   DateTime createdAt;
@@ -48,6 +50,7 @@ class SetItem {
 
   factory SetItem.fromMap(Map<String, dynamic> json) => SetItem(
         name: json["name"],
+        description: json["description"],
         questions: List<String>.from(json["questions"].map((x) => x)),
         active: json["active"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -57,6 +60,7 @@ class SetItem {
 
   Map<String, dynamic> toMap() => {
         "name": name,
+        "description": description,
         "questions": List<dynamic>.from(questions.map((x) => x)),
         "active": active,
         "createdAt": createdAt.toIso8601String(),

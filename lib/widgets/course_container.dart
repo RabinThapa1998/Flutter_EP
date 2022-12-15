@@ -18,9 +18,8 @@ class CourseContainer extends StatelessWidget {
       onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => DetailsScreen(
-                    title: eachSet.name,
-                  ))),
+              builder: (context) =>
+                  DetailsScreen(title: eachSet.name, id: eachSet.id))),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -46,7 +45,7 @@ class CourseContainer extends StatelessWidget {
                 children: [
                   Text(eachSet.name),
                   Text(
-                    "Author ${eachSet.name}",
+                    "Author ${eachSet.description}",
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(

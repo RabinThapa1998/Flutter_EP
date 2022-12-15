@@ -1,4 +1,5 @@
 import 'package:entrance_prep/constants/color.dart';
+import 'package:entrance_prep/controller/set.controller.dart';
 import 'package:entrance_prep/models/quiz.dart';
 import 'package:entrance_prep/screens/result_screen.dart';
 import 'package:entrance_prep/widgets/back_button_widget.dart';
@@ -7,19 +8,27 @@ import 'package:entrance_prep/widgets/quiz_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class DetailsScreen extends StatefulWidget {
   final String title;
+  final String id;
   const DetailsScreen({
     Key? key,
     required this.title,
+    required this.id,
   }) : super(key: key);
 
   @override
-  State<DetailsScreen> createState() => _DetailsScreenState();
+  State<DetailsScreen> createState() => _DetailsScreenState(setId: this.id);
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  String setId;
+  _DetailsScreenState({required this.setId});
+  final SetDetailsController setdetailscontroller =
+      Get.put(SetDetailsController());
+
   String eachGroupValue = '';
   late var overAllValues = new Map();
 
@@ -33,6 +42,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   initState() {
     super.initState();
+    setdetailscontroller.fetchSetsDetails(setId);
+    print("arguments----------------------------------" + setId);
+
     for (var i = 0; i < Quizzes.length; i++) {
       overAllValues[Quizzes[i].question] = '';
     }
