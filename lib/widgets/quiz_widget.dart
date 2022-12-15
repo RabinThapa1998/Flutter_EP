@@ -1,4 +1,5 @@
 import 'package:entrance_prep/constants/color.dart';
+import 'package:entrance_prep/models/get-one-set.model.dart';
 import 'package:entrance_prep/models/quiz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,9 @@ class LabeledRadio extends StatelessWidget {
   final int index;
   final String label;
   final EdgeInsets padding;
-  final String groupValue;
-  final String value;
-  final ValueChanged<String> onChanged;
+  final int groupValue;
+  final int value;
+  final ValueChanged<int> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +43,12 @@ class LabeledRadio extends StatelessWidget {
             children: <Widget>[
               Visibility(
                 visible: false,
-                child: Radio<String>(
+                child: Radio<int>(
                   visualDensity: VisualDensity.compact,
                   activeColor: Colors.white,
                   groupValue: groupValue,
                   value: value,
-                  onChanged: (String? newValue) {
+                  onChanged: (newValue) {
                     onChanged(newValue!);
                   },
                 ),
@@ -69,16 +70,10 @@ class LabeledRadio extends StatelessWidget {
 }
 
 class QuizWidget extends StatefulWidget {
-  final Quiz quizzes;
-  final Map overAllValues;
-
+  final Question questions;
   final QuizOnChangeCallback callback;
 
-  QuizWidget(
-      {Key? key,
-      required this.quizzes,
-      required this.overAllValues,
-      required this.callback})
+  QuizWidget({Key? key, required this.questions, required this.callback})
       : super(key: key);
 
   @override
@@ -93,7 +88,7 @@ class _QuizWidgetState extends State<QuizWidget> {
       decoration: BoxDecoration(color: Colors.white),
       child: Column(children: [
         Text(
-          widget.quizzes.question,
+          widget.questions.question,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(
@@ -104,17 +99,17 @@ class _QuizWidgetState extends State<QuizWidget> {
           child: ListView.builder(
             shrinkWrap: false,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.quizzes.options.length,
-            itemBuilder: (context, index) {
+            itemCount: widget.questions.options.length,
+            itemBuilder: (context, idx) {
               return LabeledRadio(
-                  index: index,
-                  label: widget.quizzes.options[index],
+                  index: idx,
+                  label: widget.questions.options[idx].option,
                   padding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 10),
-                  value: widget.quizzes.options[index],
-                  groupValue: widget.overAllValues[widget.quizzes.question],
-                  onChanged: (val) =>
-                      widget.callback(widget.quizzes.question, val.toString()));
+                  value: widget.questions.options[idx].index,
+                  groupValue: widget.questions.correct,
+                  onChanged: (val) => widget.callback(widget.questions.question,
+                      widget.questions.options[val].option));
             },
           ),
         )

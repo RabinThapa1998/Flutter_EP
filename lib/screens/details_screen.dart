@@ -68,23 +68,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                Expanded(
-                    child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  separatorBuilder: (_, __) {
-                    return const SizedBox(
-                      height: 10,
-                    );
-                  },
-                  shrinkWrap: true,
-                  itemBuilder: (_, int index) {
-                    return QuizWidget(
-                        quizzes: Quizzes[index],
-                        overAllValues: overAllValues,
-                        callback: handleRadioChange);
-                  },
-                  itemCount: Quizzes.length,
-                )),
+                Expanded(child: Obx(() {
+                  return ListView.separated(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    separatorBuilder: (_, __) {
+                      return const SizedBox(
+                        height: 10,
+                      );
+                    },
+                    shrinkWrap: true,
+                    itemBuilder: (_, int index) {
+                      return QuizWidget(
+                          questions: setdetailscontroller.questions[index],
+                          callback: handleRadioChange);
+                    },
+                    itemCount: setdetailscontroller.questions.length,
+                  );
+                })),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

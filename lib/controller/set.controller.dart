@@ -27,15 +27,7 @@ class SetController extends GetxController {
 class SetDetailsController extends GetxController {
   var isLoading = true.obs;
   var setId = ''.obs;
-  var setDetails = SetItemDetail(
-    name: '',
-    questions: [],
-    description: '',
-    active: false,
-    createdAt: DateTime.now(),
-    updatedAt: DateTime.now(),
-    id: '',
-  ).obs;
+  var questions = <Question>[].obs;
 
   SetDetailsController();
 
@@ -54,8 +46,7 @@ class SetDetailsController extends GetxController {
     try {
       isLoading(true);
       var detail = await RemoteServices.fetchSetDetails(id);
-      print("detail--------" + detail.toString());
-      setDetails.value = detail;
+      questions.value = detail.questions;
     } finally {
       isLoading(false);
     }
