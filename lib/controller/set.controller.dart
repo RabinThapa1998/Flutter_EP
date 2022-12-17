@@ -31,12 +31,6 @@ class SetDetailsController extends GetxController {
 
   SetDetailsController();
 
-  @override
-  void onInit() {
-    super.onInit();
-    // fetchSetsDetails(setId.value);
-  }
-
   void updateSetId(var id) {
     setId.value = id;
     print("---------------setId.value:------------- ${setId.value}");
