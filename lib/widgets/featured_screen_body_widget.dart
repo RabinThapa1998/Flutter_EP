@@ -3,6 +3,7 @@ import 'package:entrance_prep/screens/course_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/models/category.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FeaturedBodyWidget extends StatelessWidget {
   const FeaturedBodyWidget({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class FeaturedBodyWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,15 +37,15 @@ class FeaturedBodyWidget extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 8,
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.w,
+            vertical: 8.h,
           ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 0.8,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 24,
+            crossAxisSpacing: 20.h,
+            mainAxisSpacing: 24.w,
           ),
           itemBuilder: (context, index) {
             return CategoryCard(
@@ -97,8 +98,8 @@ class CategoryCard extends StatelessWidget {
                 height: kCategoryCardImageSize,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             Text(category.name),
             Text(

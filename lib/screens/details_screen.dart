@@ -8,6 +8,7 @@ import 'package:entrance_prep/widgets/quiz_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -58,19 +59,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
         body: SafeArea(
           bottom: false,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackButtonWidget(
                   title: widget.title,
                 ),
-                const SizedBox(
-                  height: 15,
+                SizedBox(
+                  height: 15.h,
                 ),
                 Expanded(child: Obx(() {
                   return ListView.separated(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 20.h),
                     separatorBuilder: (_, __) {
                       return const SizedBox(
                         height: 10,
@@ -86,21 +87,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   );
                 })),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SizedBox(
-                        width: 200,
-                        height: 50,
+                        width: 200.w,
+                        height: 50.h,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 primary: kPrimaryColor,
                                 onPrimary: Colors.white,
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 15),
+                                    horizontal: 20.w, vertical: 15.h),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(8.0.r),
                                 )),
                             onPressed: () {
                               Navigator.push(
@@ -115,7 +116,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               "Submit",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             )),

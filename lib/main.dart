@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
+        // minTextAdapt: true,
+        // splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp(
             title: 'Entrance Prep',
@@ -24,27 +24,27 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 primarySwatch: Colors.blue,
                 fontFamily: 'Poppins',
-                textTheme: const TextTheme(
+                textTheme: TextTheme(
                     titleLarge: TextStyle(
-                        fontSize: 28,
+                        fontSize: 28.sp,
                         color: Colors.white,
                         fontWeight: FontWeight.w500),
                     titleSmall: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     bodyMedium: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     displayMedium: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       color: Colors.black,
                     ),
                     bodySmall: TextStyle(
                       fontWeight: FontWeight.w100,
-                      fontSize: 14.0,
+                      fontSize: 14.0.sp,
                       color: Colors.grey,
                     ))),
             home: BaseScreen(),

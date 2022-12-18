@@ -4,6 +4,7 @@ import 'package:entrance_prep/models/get-set.model.dart';
 import 'package:entrance_prep/screens/details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseContainer extends StatelessWidget {
   final SetItem eachSet;
@@ -22,10 +23,10 @@ class CourseContainer extends StatelessWidget {
                   DetailsScreen(title: eachSet.name, id: eachSet.id))),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           color: Colors.white,
         ),
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,8 +37,8 @@ class CourseContainer extends StatelessWidget {
             //     height: 60,
             //   ),
             // ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: 10.w,
             ),
             Expanded(
               child: Column(
@@ -48,8 +49,8 @@ class CourseContainer extends StatelessWidget {
                     "Author ${eachSet.description}",
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: 5.h,
                   ),
                   // LinearProgressIndicator(
                   //   value: course.completedPercentage,

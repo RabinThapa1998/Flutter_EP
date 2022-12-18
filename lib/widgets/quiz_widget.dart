@@ -3,6 +3,7 @@ import 'package:entrance_prep/models/get-one-set.model.dart';
 import 'package:entrance_prep/models/quiz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 typedef void QuizOnChangeCallback(String quest, String ans);
 
@@ -35,7 +36,7 @@ class LabeledRadio extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: value == groupValue ? kPrimaryColor : Colors.white,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Padding(
           padding: padding,
@@ -92,10 +93,10 @@ class _QuizWidgetState extends State<QuizWidget> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(
-          height: 10,
+          height: 10.h,
         ),
         Container(
-          height: 200,
+          height: 200.h,
           child: ListView.builder(
             shrinkWrap: false,
             physics: const NeverScrollableScrollPhysics(),
@@ -104,8 +105,8 @@ class _QuizWidgetState extends State<QuizWidget> {
               return LabeledRadio(
                   index: idx,
                   label: widget.questions.options[idx].option,
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                   value: widget.questions.options[idx].index,
                   groupValue: widget.questions.correct,
                   onChanged: (val) => widget.callback(widget.questions.question,

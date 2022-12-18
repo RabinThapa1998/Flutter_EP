@@ -2,6 +2,7 @@ import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/widgets/custom_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EnrollBottomSheet extends StatefulWidget {
   const EnrollBottomSheet({Key? key}) : super(key: key);
@@ -14,35 +15,35 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 30.0,
+      padding: EdgeInsets.symmetric(
+        horizontal: 30.h,
       ),
       child: Row(
         children: [
           CustomIconButton(
             onTap: () {},
-            height: 45,
-            width: 45,
-            child: const Icon(
+            height: 45.h,
+            width: 45.w,
+            child: Icon(
               Icons.favorite,
               color: Colors.pink,
-              size: 30,
+              size: 30.sp,
             ),
           ),
-          const SizedBox(
-            width: 20,
+          SizedBox(
+            width: 20.w,
           ),
           Expanded(
             child: CustomIconButton(
               onTap: () {},
               color: kPrimaryColor,
-              height: 45,
-              width: 45,
-              child: const Text(
+              height: 45.h,
+              width: 45.w,
+              child: Text(
                 "Enroll Now",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({
@@ -7,8 +8,8 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 200,
+      padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 20.w),
+      height: 200.h,
       width: double.infinity,
       decoration: const BoxDecoration(
         // borderRadius: BorderRadius.only(
