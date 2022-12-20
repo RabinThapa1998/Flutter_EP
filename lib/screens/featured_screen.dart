@@ -23,7 +23,10 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
         child: Scaffold(
             body: SafeArea(
           child: SingleChildScrollView(
-              child: Column(children: [AppBarWidget(), FeaturedBodyWidget()])),
+              child: Column(children: [
+            AppBarWidget(),
+            FeaturedBodyWidget(),
+          ])),
         )));
   }
 }

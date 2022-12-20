@@ -54,6 +54,44 @@ class FeaturedBodyWidget extends StatelessWidget {
           },
           itemCount: categoryList.length,
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Notes",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "See All",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: kPrimaryColor),
+                ),
+              )
+            ],
+          ),
+        ),
+        Container(
+          height: 200.h,
+          width: double.infinity,
+          child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [1, 2, 3, 4, 5, 6, 7].map((item) {
+                return Container(
+                  width: 100.w,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                );
+              }).toList()),
+        )
       ],
     );
   }

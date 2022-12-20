@@ -23,7 +23,8 @@ class AppBarWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Practice", style: Theme.of(context).textTheme.titleLarge),
+              Text("Entrance Prepartion",
+                  style: Theme.of(context).textTheme.titleLarge),
               Text("Today's Goal 20 Questions",
                   style: Theme.of(context).textTheme.bodySmall),
             ],
