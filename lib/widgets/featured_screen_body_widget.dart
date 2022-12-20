@@ -114,15 +114,15 @@ class CategoryCard extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.sp),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(.1),
-              blurRadius: 4.0,
-              spreadRadius: .05,
+              blurRadius: 4.0.sp,
+              spreadRadius: .05.sp,
             ), //BoxShadow
           ],
         ),
@@ -133,7 +133,7 @@ class CategoryCard extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Image.asset(
                 category.thumbnail,
-                height: kCategoryCardImageSize,
+                height: 120.h,
               ),
             ),
             SizedBox(
