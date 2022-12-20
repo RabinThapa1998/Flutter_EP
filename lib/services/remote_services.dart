@@ -24,7 +24,6 @@ class RemoteServices {
     if (response.statusCode == 200) {
       var jsonString = response.body;
 
-      print("res: ${jsonString}");
       var res = SetDetails.fromJson(jsonString);
       return res.data;
     } else {

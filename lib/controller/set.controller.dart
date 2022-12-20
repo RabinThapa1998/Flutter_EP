@@ -28,12 +28,12 @@ class SetDetailsController extends GetxController {
   var isLoading = true.obs;
   var setId = ''.obs;
   var questions = <Question>[].obs;
+  var selectionList = Map<String, String>().obs;
 
   SetDetailsController();
 
   void updateSetId(var id) {
     setId.value = id;
-    print("---------------setId.value:------------- ${setId.value}");
   }
 
   void fetchSetsDetails(var id) async {
@@ -41,6 +41,10 @@ class SetDetailsController extends GetxController {
       isLoading(true);
       var detail = await RemoteServices.fetchSetDetails(id);
       questions.value = detail.questions;
+      detail.questions.forEach((e) => selectionList.value[e.question] = '');
+      print("selectionList---------------------------------");
+
+      print(selectionList);
     } finally {
       isLoading(false);
     }

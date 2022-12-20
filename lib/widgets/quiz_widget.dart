@@ -21,49 +21,44 @@ class LabeledRadio extends StatelessWidget {
   final int index;
   final String label;
   final EdgeInsets padding;
-  final int groupValue;
-  final int value;
-  final ValueChanged<int> onChanged;
+  final String groupValue;
+  final String value;
+  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        if (value != groupValue) {
-          onChanged(value);
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: value == groupValue ? kPrimaryColor : Colors.white,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        child: Padding(
-          padding: padding,
-          child: Row(
-            children: <Widget>[
-              Visibility(
-                visible: false,
-                child: Radio<int>(
-                  visualDensity: VisualDensity.compact,
-                  activeColor: Colors.white,
-                  groupValue: groupValue,
-                  value: value,
-                  onChanged: (newValue) {
-                    onChanged(newValue!);
-                  },
+    return Container(
+      decoration: BoxDecoration(
+        color: value == groupValue ? kPrimaryColor : Colors.white,
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: <Widget>[
+            Visibility(
+              visible: true,
+              child: Radio<String>(
+                visualDensity: VisualDensity.compact,
+                activeColor: Colors.white,
+                groupValue: groupValue,
+                value: value,
+                onChanged: (newValue) {
+                  print("newValue" + value!);
+                  print("groupValue" + groupValue!);
+                  onChanged(newValue!);
+                },
+              ),
+            ),
+            Expanded(
+              child: Text(
+                "${index + 1}.   ${label}",
+                style: TextStyle(
+                  color: value == groupValue ? Colors.white : Colors.black,
                 ),
               ),
-              Expanded(
-                child: Text(
-                  "${index + 1}.   ${label}",
-                  style: TextStyle(
-                    color: value == groupValue ? Colors.white : Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -73,8 +68,12 @@ class LabeledRadio extends StatelessWidget {
 class QuizWidget extends StatefulWidget {
   final Question questions;
   final QuizOnChangeCallback callback;
-
-  QuizWidget({Key? key, required this.questions, required this.callback})
+  final Map overAllValues;
+  QuizWidget(
+      {Key? key,
+      required this.questions,
+      required this.callback,
+      required this.overAllValues})
       : super(key: key);
 
   @override
@@ -85,7 +84,7 @@ class _QuizWidgetState extends State<QuizWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
       decoration: BoxDecoration(color: Colors.white),
       child: Column(children: [
         Text(
@@ -95,24 +94,23 @@ class _QuizWidgetState extends State<QuizWidget> {
         SizedBox(
           height: 10.h,
         ),
-        Container(
+        SizedBox(
           height: 200.h,
           child: ListView.builder(
-            shrinkWrap: false,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.questions.options.length,
-            itemBuilder: (context, idx) {
-              return LabeledRadio(
-                  index: idx,
-                  label: widget.questions.options[idx].option,
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                  value: widget.questions.options[idx].index,
-                  groupValue: widget.questions.correct,
-                  onChanged: (val) => widget.callback(widget.questions.question,
-                      widget.questions.options[val].option));
-            },
-          ),
+              shrinkWrap: false,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.questions.options.length,
+              itemBuilder: (context, idx) {
+                return LabeledRadio(
+                    index: idx,
+                    label: widget.questions.options[idx].option,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                    value: widget.questions.options[idx].option,
+                    groupValue: widget.overAllValues[widget.questions.question],
+                    onChanged: (val) =>
+                        widget.callback(widget.questions.question, val));
+              }),
         )
       ]),
     );

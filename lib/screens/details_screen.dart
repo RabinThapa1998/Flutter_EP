@@ -31,24 +31,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
       Get.put(SetDetailsController());
 
   String eachGroupValue = '';
-  late var overAllValues = new Map();
 
   void handleRadioChange(String quest, String ans) {
-    setState(() {
-      overAllValues[quest] = ans;
-    });
-    print("overAllValues" + overAllValues.toString());
+    setdetailscontroller.selectionList[quest] = ans;
   }
 
   @override
   initState() {
     super.initState();
     setdetailscontroller.fetchSetsDetails(setId);
-    print("arguments----------------------------------" + setId);
-
-    for (var i = 0; i < Quizzes.length; i++) {
-      overAllValues[Quizzes[i].question] = '';
-    }
   }
 
   @override
@@ -81,7 +72,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     itemBuilder: (_, int index) {
                       return QuizWidget(
                           questions: setdetailscontroller.questions[index],
-                          callback: handleRadioChange);
+                          callback: handleRadioChange,
+                          overAllValues: setdetailscontroller.selectionList);
                     },
                     itemCount: setdetailscontroller.questions.length,
                   );
@@ -108,7 +100,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ResultScreen(
-                                          results: overAllValues,
+                                          results: setdetailscontroller
+                                              .selectionList,
                                         )),
                               );
                             },
