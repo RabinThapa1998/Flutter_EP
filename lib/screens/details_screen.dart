@@ -60,24 +60,32 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Expanded(child: Obx(() {
-                  return ListView.separated(
-                    padding: EdgeInsets.symmetric(vertical: 20.h),
-                    separatorBuilder: (_, __) {
-                      return const SizedBox(
-                        height: 10,
-                      );
-                    },
-                    shrinkWrap: true,
-                    itemBuilder: (_, int index) {
-                      return QuizWidget(
-                          questions: setdetailscontroller.questions[index],
-                          callback: handleRadioChange,
-                          overAllValues: setdetailscontroller.selectionList);
-                    },
-                    itemCount: setdetailscontroller.questions.length,
+                Obx(() {
+                  return Expanded(
+                    child: ListView(children: [
+                      ...setdetailscontroller.questions.map((questItem) {
+                        return Column(
+                          children: [
+                            Text(questItem.question),
+                            ...questItem.options.map((opt) {
+                              return ListTile(
+                                title: Text(opt.option),
+                                leading: Radio(
+                                    value: opt.index,
+                                    groupValue: setdetailscontroller
+                                        .selectionList[questItem.question],
+                                    onChanged: (val) {
+                                      handleRadioChange(
+                                          questItem.question, val.toString());
+                                    }),
+                              );
+                            }).toList()
+                          ],
+                        );
+                      }).toList()
+                    ]),
                   );
-                })),
+                }),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                   child: Row(
