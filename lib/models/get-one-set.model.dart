@@ -77,6 +77,7 @@ class Question {
     required this.question,
     required this.options,
     required this.correct,
+    required this.selected,
     required this.sets,
     required this.description,
     required this.active,
@@ -88,6 +89,7 @@ class Question {
   String question;
   List<Option> options;
   int correct;
+  var selected;
   String sets;
   String description;
   bool active;
@@ -104,6 +106,7 @@ class Question {
         options:
             List<Option>.from(json["options"].map((x) => Option.fromMap(x))),
         correct: json["correct"],
+        selected: json["selected"],
         sets: json["sets"],
         description: json["description"],
         active: json["active"],
@@ -116,6 +119,7 @@ class Question {
         "question": question,
         "options": List<dynamic>.from(options.map((x) => x.toMap())),
         "correct": correct,
+        "selected": selected,
         "sets": sets,
         "description": description,
         "active": active,

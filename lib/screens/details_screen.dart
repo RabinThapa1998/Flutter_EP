@@ -72,11 +72,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 title: Text(opt.option),
                                 leading: Radio(
                                     value: opt.index,
-                                    groupValue: setdetailscontroller
-                                        .selectionList[questItem.question],
+                                    groupValue: questItem.selected,
+                                    toggleable: true,
                                     onChanged: (val) {
-                                      handleRadioChange(
-                                          questItem.question, val.toString());
+                                      setState(() {
+                                        questItem.selected =
+                                            int.parse(val.toString());
+                                      });
                                     }),
                               );
                             }).toList()

@@ -42,8 +42,6 @@ class SetDetailsController extends GetxController {
       var detail = await RemoteServices.fetchSetDetails(id);
       questions.value = detail.questions;
       detail.questions.forEach((e) => selectionList.value[e.question] = '');
-      print("selectionList---------------------------------");
-
       print(selectionList);
     } finally {
       isLoading(false);
