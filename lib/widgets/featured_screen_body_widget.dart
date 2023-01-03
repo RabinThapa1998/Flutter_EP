@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/models/category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FeaturedBodyWidget extends StatelessWidget {
   const FeaturedBodyWidget({Key? key}) : super(key: key);
@@ -76,22 +77,6 @@ class FeaturedBodyWidget extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          height: 200.h,
-          width: double.infinity,
-          child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [1, 2, 3, 4, 5, 6, 7].map((item) {
-                return Container(
-                  width: 100.w,
-                  margin: EdgeInsets.symmetric(horizontal: 5.w),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                );
-              }).toList()),
-        )
       ],
     );
   }
@@ -131,7 +116,7 @@ class CategoryCard extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topRight,
-              child: Image.asset(
+              child: SvgPicture.asset(
                 category.thumbnail,
                 height: 120.h,
               ),

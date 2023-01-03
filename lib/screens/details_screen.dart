@@ -106,14 +106,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   borderRadius: BorderRadius.circular(8.0.r),
                                 )),
                             onPressed: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => ResultScreen(
-                              //             results: setdetailscontroller
-                              //                 .selectionList,
-                              //           )),
-                              // );
                               Get.to(ResultScreen());
                             },
                             child: Text(
