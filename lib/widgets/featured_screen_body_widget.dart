@@ -1,10 +1,12 @@
 import 'package:entrance_prep/constants/size.dart';
 import 'package:entrance_prep/screens/course_screen.dart';
+import 'package:entrance_prep/screens/feature_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:entrance_prep/constants/color.dart';
 import 'package:entrance_prep/models/category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class FeaturedBodyWidget extends StatelessWidget {
   const FeaturedBodyWidget({Key? key}) : super(key: key);
@@ -92,12 +94,7 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const CourseScreen(),
-        ),
-      ),
+      onTap: () => Get.to(FeatureDetailScreen()),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         decoration: BoxDecoration(

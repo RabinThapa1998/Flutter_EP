@@ -30,7 +30,7 @@ class _CourseScreenState extends State<CourseScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackButtonWidget(
-                  title: "tests",
+                  title: "MBBS",
                 ),
                 const SizedBox(
                   height: 15,
